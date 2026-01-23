@@ -1,5 +1,6 @@
 # ALX Backend Nexus: Property Insurance Backend System
 *By: Hilda Enyioko*
+
 ---
 
 ## Overview
@@ -7,6 +8,7 @@
 This project is a **Property Insurance Backend System** designed to simulate a real-world e-commerce backend architecture.
 
 The system manages insurance plans in a product-catalog-like structure, enabling users to browse, filter, and subscribe to insurance plans while administrators manage plans and categories. It emphasizes scalability, security, performance, and clean API design, aligning with the ALX ProDev Backend requirements.
+
 ---
 
 ## Project Objectives
