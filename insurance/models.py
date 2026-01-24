@@ -11,7 +11,7 @@ class PropertyCategory(models.Model):
     ]
     
     name = models.TextField(choices=PROPERTY_NAMES, unique=True)
-    description = models.TextField()
+    description = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 # Core e-commerce product
