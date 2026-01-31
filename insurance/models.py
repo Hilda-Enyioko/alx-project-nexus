@@ -24,7 +24,7 @@ class InsurancePlan(models.Model):
     ]
     
     name = models.CharField(max_length=500)
-    property_category = models.ForeignKey(PropertyCategory, on_delete=models.CASCADE, db_index=True)
+    property_category = models.ForeignKey(PropertyCategory, on_delete=models.CASCADE, db_index=True, related_name='insurance_plans')
     coverage_level = models.TextField(choices=COVERAGE_LEVELS, db_index=True)
     coverage_amount = models.DecimalField(max_digits=20, decimal_places=2)
     premium = models.DecimalField(max_digits=20, decimal_places=2, db_index=True)
@@ -42,8 +42,8 @@ class PolicySubscription(models.Model):
         ('cancelled', 'Cancelled')
     ]
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True)
-    insurance_plan = models.ForeignKey(InsurancePlan, on_delete=models.CASCADE, db_index=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True, related_name='policy_subscriptions')
+    insurance_plan = models.ForeignKey(InsurancePlan, on_delete=models.CASCADE, db_index=True, related_name='policy_subscriptions')
     start_date = models.DateField(db_index=True)
     end_date = models.DateField(db_index=True)
     status = models.TextField(choices=POLICY_STATUSES, db_index=True)
