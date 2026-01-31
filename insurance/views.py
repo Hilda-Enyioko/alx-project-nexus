@@ -5,7 +5,8 @@ from .models import InsurancePlan, PropertyCategory, PolicySubscription
 from .serializers import InsurancePlanSerializer, PropertyCategorySerializer, PolicySubscriptionSerializer
 
 class InsurancePlanViewSet(ModelViewSet):
-    queryset = InsurancePlan.objects.all()
+    # Query optimization
+    queryset = InsurancePlan.objects.prefetch_related('policy_subscriptions')
     serializer_class = InsurancePlanSerializer
 
     def get_permissions(self):
@@ -28,8 +29,9 @@ class PolicySubscriptionViewSet(ModelViewSet):
     serializer_class = PolicySubscriptionSerializer
 
     def get_queryset(self):
-        # Users can only see their own subscriptions
-        return PolicySubscription.objects.filter(user=self.request.user)
+        # Users can only see their own policy subscriptions and related insurance plans
+        return PolicySubscription.objects.select_related("insurance_plan", "user").filter(user=self.request.user)
+
 
     def get_permissions(self):
         if self.action == "create":
