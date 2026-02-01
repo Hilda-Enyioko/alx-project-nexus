@@ -12,5 +12,5 @@ router.register(r'property-categories', PropertyCategoryViewSet, basename='prope
 router.register(r'policy-subscriptions', PolicySubscriptionViewSet, basename='policy-subscription')
 
 urlpatterns = [
-    path('', include('router.urls'))
+    path('', include(router.urls))
 ]

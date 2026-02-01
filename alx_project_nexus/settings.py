@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf-spectacular',
     'accounts',
     'insurance',
 ]
@@ -126,6 +127,7 @@ REST_FRAMEWORK = {
     "DEFAUL_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Simple JWT Configuration
@@ -137,3 +139,11 @@ SIMPLE_JWT = {
 
 # Custom User Model
 AUTH_USER_MODEL = "accounts.User"
+
+# Spectacular Settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'ALX Project Nexus API',
+    'DESCRIPTION': 'API documentation for ALX Project Nexus',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
