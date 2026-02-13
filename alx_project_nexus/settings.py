@@ -159,4 +159,10 @@ SPECTACULAR_SETTINGS = {
 }
 
 # CORS Headers Configuration
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://theeinsurance-portal.vercel.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://theeinsurance-portal.vercel.app",
+]
