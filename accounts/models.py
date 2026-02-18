@@ -7,6 +7,9 @@ class User(AbstractUser):
         ('admin', 'ADMIN'),
         ('user', 'USER')
     ]
+    
+    # Make email unique for authentication purposes
+    email = models.EmailField(unique=True)
     role = models.TextField(choices=ROLE_CHOICES)
     
     # Use Email for Login Authentication inline with JWT authentication
