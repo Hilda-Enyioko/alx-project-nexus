@@ -9,6 +9,10 @@ class User(AbstractUser):
     ]
     role = models.TextField(choices=ROLE_CHOICES)
     
+    # Use Email for Login Authentication inline with JWT authentication
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username'] #username is still a required field
+    
     def __str__(self):
-        return self.user.username
+        return self.email
     
